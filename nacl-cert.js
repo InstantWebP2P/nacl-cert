@@ -1,3 +1,7 @@
+// NACL certification implementation
+// Copyright (c) 2014 Tom Zhou<iwebpp@gmail.com>
+
+
 (function(Export, Nacl){
 	var CERT_VERSION = '1.0';
 	

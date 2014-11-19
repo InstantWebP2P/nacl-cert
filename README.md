@@ -7,6 +7,7 @@ NACL Certification System
 ### Certification file format as JSON consists of description and signature two parts
 
 * Description object defined as below
+
   {
       // common part or request part
         "version": string,       // version: '1.0' 
@@ -25,11 +26,13 @@ NACL Certification System
   }
   
 * Signature object defined as below
+
   {
       signature: array // NACL signature
   }
   
 * Entire cert object defined as below
+
   {
       desc: Description object,
       sign: Signature object
@@ -37,6 +40,7 @@ NACL Certification System
   
   
 ### Cert request object defined as Common part of Description
+
   {
      // common part or request part
         "version": string,       // version: '1.0' 
@@ -46,4 +50,12 @@ NACL Certification System
             "tte": Date as ms,   // cert live time to expire, ms
       "publickey": array,        // NACL box public key to sign
   }
+
+
+<br/>
+### License
+(The MIT License)
+
+Copyright (c) 2014 Tom Zhou(iwebpp@gmail.com)
+
 
