@@ -13,11 +13,13 @@ NACL Certification System
            "type": string,       // type: 'self', 'ca'
           "names": string array, // domain name to ask sign
             "ips": string array, // domain ip to ask sign
-            "tte": Date,         // cert live time to expire
-      "publickey": array,        // NACL box public key to sign
+            "tte": Date as ms,   // cert live time to expire, ms
+      "publickey": array,        // NACL box public key to sign with CA, 
+                                 // or signature public key to sign by self
       
       // append fields when sign
-            "ca": string       // CA domain name, like iwebpp.com, or 'self' in case self-sign
+            "ca": string       // CA domain name, like iwebpp.com, 
+                               // MUST be filled in advance in case self-sign
            "gid": UUID,string, // cert global id: UUID
       "signtime": Date,        // signed time
   }
@@ -41,7 +43,7 @@ NACL Certification System
            "type": string,       // type: 'self', 'ca'
           "names": string array, // domain name to ask sign
             "ips": string array, // domain ip to ask sign
-            "tte": Date,         // cert live time to expire
+            "tte": Date as ms,   // cert live time to expire, ms
       "publickey": array,        // NACL box public key to sign
   }
 
