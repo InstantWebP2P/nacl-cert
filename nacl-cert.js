@@ -152,6 +152,14 @@
 				return false;
 			}
 			
+			// check CA name
+			if (!(cert.desc.ca && 
+				  cacert.desc.ca && 
+				 (cert.desc.ca.toLowerCase() === cacert.desc.ca.toLowerCase()))) {
+				console.log('CA not matched');
+				return false;
+			}
+			
 			// extract nacl sign publicKey
 			var casignPublicKey = ArrayToUint8(cacert.desc.publickey);
 
