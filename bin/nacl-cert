@@ -53,7 +53,7 @@ if (mode.match(/genca/gi)) {
 	var caname = name.split(',')[0];
 	var cadesc = {
 			name: caname,
-			tte: new Date().getTime() + days*24*3600
+			tte: new Date().getTime() + days*24*3600000
 	};
 
 	var ca = naclcert.generateCA(cadesc);
@@ -76,7 +76,7 @@ if (mode.match(/genca/gi)) {
 	var certdesc = {
 			version: '1.0',
 			type: 'ca',
-			tte: new Date().getTime() + days*24*3600,
+			tte: new Date().getTime() + days*24*3600000,
 			publickey: JSON.parse(fs.readFileSync(pk).toString()).publickey,
 			names: certnames,
 			ips: ips.split(',') || []
