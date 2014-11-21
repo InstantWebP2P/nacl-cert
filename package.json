@@ -2,7 +2,7 @@
   "author": "Tom Zhou (http://iwebpp.com)",
   "name": "nacl-cert",
   "description": "NACL certification system",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/InstantWebP2P/nacl-cert"
@@ -15,7 +15,7 @@
     "node": ">=0.8.0",
     "node-uuid": "1.4.1"
   },
-  "main": "./index",
+  "main": "./nacl-cert.js",
   "dependencies": {
     "tweetnacl": "0.12.2",
     "commander": "~1.1.1",
