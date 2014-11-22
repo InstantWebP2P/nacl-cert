@@ -12,7 +12,7 @@ NACL Certification System
       // common part or request part
         "version": string,       // version: '1.0' 
            "type": string,       // type: 'self', 'ca'
-            "tte": Date as ms,   // cert live time to expire, ms
+            "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms
              "ca": string        // CA domain name, like iwebpp.com, 
                                  // in case self-sign it MUST be filled in advance 
       "publickey": byte array,   // NACL Box public key to sign with CA, 
@@ -23,7 +23,7 @@ NACL Certification System
             
       // append fields when sign
            "gid": byte string,   // cert global id: 16 bytes of string
-      "signtime": Date,          // signed time
+      "signtime": Date as ms,    // signed time as ms from UTC 1970-01-01T00:00:00Z
   }
   
 * Signature object defined as below
@@ -46,7 +46,7 @@ self-signed:  {
      // common part or request part
         "version": string,       // version: '1.0' 
            "type": 'self',       // type: 'self'
-            "tte": Date as ms,   // cert live time to expire, ms
+            "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms
              "ca": string        // CA domain name, like iwebpp.com
       "publickey": byte array,   // NACL Sign public key to sign by self
   }
@@ -55,7 +55,7 @@ ca-signed:  {
      // common part or request part
         "version": string,       // version: '1.0' 
            "type": 'ca',         // type: 'ca'
-            "tte": Date as ms,   // cert live time to expire, ms
+            "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms
              "ca": string        // CA domain name, like iwebpp.com                       
       "publickey": byte array,   // NACL box public key to sign
           "names": string array, // domain name to ask sign

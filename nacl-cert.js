@@ -12,7 +12,7 @@
 	// @return cert on success, false on fail
 	Export.generate = function(reqdesc, cakey, cacert) {
 		// check version
-		if (!(reqdesc && reqdesc.version.toLowerCase() === CERT_VERSION)) {
+		if (!(reqdesc && reqdesc.version === CERT_VERSION)) {
 			console.log('Invalid cert request version');
 			return false;
 		}
@@ -39,7 +39,7 @@
 				}
 			}
 			
-			// appand fields
+			// append fields
 			reqdesc.signtime = new Date().getTime();
 			reqdesc.gid = UUID.v4();
 
