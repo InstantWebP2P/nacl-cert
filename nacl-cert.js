@@ -52,8 +52,8 @@
 					                   Nacl.util.decodeUTF8(descstr);
 
 			if (!((cakey &&				  
-				  Array.isArray(cakey) &&
-				  cakey.length === Nacl.sign.secretKeyLength) ||
+				   Array.isArray(cakey) &&
+				   cakey.length === Nacl.sign.secretKeyLength) ||
 				  (cakey &&				  
 				   cakey instanceof Uint8Array &&
 				   cakey.length === Nacl.sign.secretKeyLength))) {
@@ -157,6 +157,12 @@
 				  cacert.desc.ca && 
 				 (cert.desc.ca.toLowerCase() === cacert.desc.ca.toLowerCase()))) {
 				console.log('CA not matched');
+				return false;
+			}
+			
+			// check CA time-to-expire
+			if (cert.desc.tte && cert.desc.tte > cacert.desc.tte) {
+				console.log('Invalid cert time-to-expire, bigger than CA');
 				return false;
 			}
 			
