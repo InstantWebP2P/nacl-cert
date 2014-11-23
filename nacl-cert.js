@@ -199,14 +199,15 @@
 		return true;
 	}
 
-	// Check domain
+	// Check domain name
 	Export.checkDomain = function(cert, expectDomain) {
+		///console.log('expectDomain:'+expectDomain);
 		var ret = false;
 
 		if (cert.desc && cert.desc.names)
 			for (var i = 0; i < cert.desc.names.length; i ++)
 				// TBD... sub-domain match
-				if (expectIP === cert.desc.names[i]) {
+				if (expectDomain && expectDomain === cert.desc.names[i]) {
 					ret = true;
 					break;
 				}
@@ -216,11 +217,12 @@
 
 	// Check ip
 	Export.checkIP = function(cert, expectIP) {
+		///console.log('expectIP:'+expectIP);
 		var ret = false;
 
 		if (cert.desc && cert.desc.ips)
 			for (var i = 0; i < cert.desc.ips.length; i ++)
-				if (expectIP === cert.desc.ips[i]) {
+				if (expectIP && expectIP === cert.desc.ips[i]) {
 					ret = true;
 					break;
 				}
@@ -233,10 +235,10 @@
 	Export.generateCA = function(cainfo) {
 		// prepare self-sign reqdesc
 		var reqdesc = {};
-		reqdesc.version = '1.0';  // fixed
-		reqdesc.type    = 'self';    // fixed
+		reqdesc.version = '1.0';       // fixed
+		reqdesc.type    = 'self';      // fixed
 		reqdesc.ca      = cainfo.name; // user input
-		reqdesc.tte     = cainfo.tte; // user input
+		reqdesc.tte     = cainfo.tte;  // user input
 
 		// generate Sign keypair
 		var skp           = Nacl.sign.keyPair();
@@ -248,6 +250,9 @@
 		// return cert with Sign secretKey as JSON array
 		return {cert: cert, secretkey: Uint8ToArray(skp.secretKey)};
 	}
+	
+	// default NACL rootCA cert
+	Export.rootCA = {};
 
 	// Utils
 	function ArrayToUint8(data) {
