@@ -206,10 +206,14 @@
 
 		if (cert.desc && cert.desc.names)
 			for (var i = 0; i < cert.desc.names.length; i ++)
-				// TBD... sub-domain match
-				if (expectDomain && expectDomain === cert.desc.names[i]) {
-					ret = true;
-					break;
+				// allow sub-domain match, like xxx.iwebpp.com will pass in case cert name is iwebpp.com
+				if (expectDomain) {
+					var nmreg = new RegExp('(('+cert.desc.names[i]+')|(.'+cert.desc.names[i]+')$)',"gi");
+					if (expectDomain.match(nmreg)) {
+						///console.log('checkDomain passed');
+						ret = true;
+						break;
+					}
 				}
 
 		return ret;
@@ -254,6 +258,12 @@
 	// default NACL rootCA cert
 	Export.rootCA = {};
 
+	// NACL Box keypair
+	Export.BoxkeyPair = Nacl.box.keyPair;
+	
+	// NACL Signature keypair
+	Export.SignkeyPair = Nacl.sign.keyPair;
+	
 	// Utils
 	function ArrayToUint8(data) {
 		if (Array.isArray(data)) {
