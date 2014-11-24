@@ -255,8 +255,8 @@
 		return {cert: cert, secretkey: Uint8ToArray(skp.secretKey)};
 	}
 	
-	// default NACL rootCA cert
-	Export.rootCA = {};
+	// default NACL rootCA cert, never modify it
+	Export.rootCA = JSON.parse('{"desc":{"version":"1.0","type":"self","ca":"iwebpp.com","tte":4570381246341,"publickey":[237,135,86,100,145,128,37,184,250,64,66,132,116,123,207,51,182,199,59,95,17,186,93,249,220,212,109,77,200,222,157,67],"signtime":1416781246454,"gid":"d2f971fc-98ad-4dea-ada2-74ebc129ed99"},"sign":{"signature":[214,154,215,247,146,167,144,7,25,170,129,182,224,231,13,239,250,159,139,23,184,249,151,12,153,188,61,76,32,215,218,31,185,251,224,222,15,3,17,53,121,125,166,143,167,52,148,146,85,94,234,202,196,157,211,142,134,74,109,78,7,123,177,2]}}');
 
 	// NACL Box keypair
 	Export.BoxkeyPair = Nacl.box.keyPair;
