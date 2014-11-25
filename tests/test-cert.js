@@ -3,6 +3,7 @@ var cert = require('../nacl-cert');
 
 // self-sign
 var ca = cert.generateCA({name: 'iwebpp.com', tte: new Date('2020-01-01').getTime()});
+var ca2 = cert.generateCA({name: 'iwebpp.com', tte: new Date('2020-01-01').getTime()});
 
 if (ca)
 	console.log('\n\nself-signed CA:'+JSON.stringify(ca));
@@ -43,4 +44,9 @@ if (!cert.validate(bcert, ca.cert))
 else 
 	console.log('\n\tCA-signed cert validate ... pass');
 
+// check fake validate
+if (cert.validate(bcert, ca2.cert))
+	throw new Error('\nCA-signed Cert validate faked');
+else 
+	console.log('\n\tCA-signed cert validate ... pass');
 
