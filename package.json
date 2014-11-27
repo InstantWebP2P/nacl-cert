@@ -12,13 +12,13 @@
     "cert"
   ],
   "engines": {
-    "node": ">=0.8.0",
-    "node-uuid": "1.4.1"
+    "node": ">=0.8.0"
   },
   "main": "./nacl-cert.js",
   "dependencies": {
     "tweetnacl": "0.12.2",
     "commander": "~1.1.1",
-    "optimist": "0.3.x"
+    "optimist": "0.3.x",
+    "node-uuid": "1.4.1"
   }
 }
