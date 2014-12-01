@@ -219,7 +219,7 @@
 		return ret;
 	}
 
-	// Check ip
+	// Check IP
 	Export.checkIP = function(cert, expectIP) {
 		///console.log('expectIP:'+expectIP);
 		var ret = false;
@@ -233,7 +233,22 @@
 
 		return ret;
 	}
+	
+	// Check MAC
+	Export.checkMAC = function(cert, expectMAC) {
+		///console.log('expectMAC:'+expectMAC);
+		var ret = false;
+		
+		if (cert.desc && cert.desc.macs)
+			for (var i = 0; i < cert.desc.macs.length; i ++)
+				if (expectMAC && expectMAC === cert.desc.macs[i]) {
+					ret = true;
+					break;
+				}
 
+		return ret;
+	}
+	
 	// Generate self-sgin CA
 	// @param cainfo: fill domain name, time-to-expire
 	Export.generateCA = function(cainfo) {

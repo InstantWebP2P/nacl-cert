@@ -17,7 +17,9 @@ var help = [
     "options:",
     "  -m, --mode      genca/gencert/genkeypair/validateca/validatecert    Generate or validate cer, MUST",
     "  -n  --names     domain name                Domain names separated by ,",
-    "  -i  --ips       ip                         IPs separated by ,",
+    "  -i  --ips       IP                         IP addresses separated by ,",
+    "      --macs      MAC                        MAC addresses separated by ,",
+
     "  -d  --days      duration days              Cert duration, Days",
     "  -p  --publickey box public key             NACL box publicKey filepath to sign or cert to validate",
     "  -c  --ca        ca cert/secretkey          CA cert[secretkey] filepath used to generate/validate cert",
@@ -35,6 +37,7 @@ var   mode = argv.m || argv.mode,
 	  days = argv.d || argv.days,
 	  pk   = argv.p || argv.publickey,
 	  ips  = argv.i || argv.ips,
+	  macs =           argv.macs,
 	capath = argv.c || argv.ca,
 	  user = argv.u || argv.user;
 
@@ -79,7 +82,8 @@ if (mode.match(/genca/gi)) {
 			tte: new Date().getTime() + days*24*3600000,
 			publickey: JSON.parse(fs.readFileSync(pk).toString()).publickey,
 			names: certnames,
-			ips: ips.split(',') || []
+			ips: ips.split(',') || [],
+			macs: macs.split(',') || [],
 	};
 	var caobj = JSON.parse(fs.readFileSync(capath).toString());
 
