@@ -7,6 +7,8 @@ NACL Certification System
 ### Certification file format as JSON consists of description and signature two parts
 
 * Description object defined as below
+
+```js
   {  
       // common part or request part  
         "version": string,       // version: '1.0'  
@@ -23,19 +25,28 @@ NACL Certification System
       // append fields when sign  
             "gid": byte string,  // cert global id: 16 bytes of string  
        "signtime": Date as ms,   // signed time as ms from UTC 1970-01-01T00:00:00Z  
-  }  
+  }
+  ```
+
 * Signature object defined as below
+
+```js
   {  
       signature: byte array      // NACL signature  
-  }  
+  }
+  ```
+  
 * Entire cert object defined as below
+```js
   {  
       desc: Description object,  
       sign: Signature object  
-  }  
+  }
+  ```
 
 ### Cert request object defined as Common part of Description
 
+```js
 self-signed:  {  
      // common part or request part  
         "version": string,       // version: '1.0'  
@@ -54,7 +65,8 @@ ca-signed:  {
       "publickey": byte array,   // NACL box public key to sign  
             "ips": string array, // domain ip address to ask sign, ignore for ca-sign cert
            "macs": string array, // domain mac address to ask sign, ignore for ca-sign cert  
-  }  
+  }
+  ```
 
 <br/>
 ### License
