@@ -18,9 +18,9 @@ NACL Certification System
                                  // in case self-sign it MUST be filled in advance  
       "publickey": byte array,   // NACL Box public key to sign with CA,  
                                  // or Sign public key to sign by self  
-          "names": string array, // domain name to ask sign, ignore for ca-sign cert  
-            "ips": string array, // domain ip address to ask sign, ignore for ca-sign cert
-           "macs": string array, // domain mac address to ask sign, ignore for ca-sign cert  
+          "names": string array, // domain name to ask sign, ignore for self-sign cert  
+            "ips": string array, // domain ip address to ask sign, ignore for self-sign cert
+           "macs": string array, // domain mac address to ask sign, ignore for self-sign cert  
               
       // append fields when sign  
             "gid": byte string,  // cert global id: 16 bytes of string  
@@ -64,9 +64,9 @@ ca-signed:  {
              "ca": string        // CA domain name, like iwebpp.com  
       "publickey": byte array,   // NACL box public key to sign
         
-          "names": string array, // domain name to ask sign, ignore for ca-sign cert      
-            "ips": string array, // domain ip address to ask sign, ignore for ca-sign cert
-           "macs": string array, // domain mac address to ask sign, ignore for ca-sign cert  
+          "names": string array, // domain name to ask sign, ignore for self-sign cert      
+            "ips": string array, // domain ip address to ask sign, ignore for self-sign cert
+           "macs": string array, // domain mac address to ask sign, ignore for self-sign cert  
   }
   ```
 
