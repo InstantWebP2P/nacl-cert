@@ -62,7 +62,9 @@ ca-signed:  {
            "type": 'ca',         // type: 'ca'  
             "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  
              "ca": string        // CA domain name, like iwebpp.com  
-      "publickey": byte array,   // NACL box public key to sign  
+      "publickey": byte array,   // NACL box public key to sign
+        
+          "names": string array, // domain name to ask sign, ignore for ca-sign cert      
             "ips": string array, // domain ip address to ask sign, ignore for ca-sign cert
            "macs": string array, // domain mac address to ask sign, ignore for ca-sign cert  
   }
