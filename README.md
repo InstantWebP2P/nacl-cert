@@ -23,7 +23,7 @@ NACL Certification System
            "macs": string array, // domain mac address to ask sign, ignore for self-sign cert  
               
       // append fields when sign  
-            "gid": byte string,  // cert global id: 16 bytes of string  
+            "gid": uuid string,  // cert global id: 16 bytes of uuid string  
        "signtime": Date as ms,   // signed time as ms from UTC 1970-01-01T00:00:00Z  
   }
   ```
