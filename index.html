@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Nacl-cert by InstantWebP2P</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/InstantWebP2P/nacl-cert">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Nacl-cert</h1>
+            <h2>NACL Certification System</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/InstantWebP2P/nacl-cert/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/InstantWebP2P/nacl-cert/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h2>
+<a id="nacl-cert" class="anchor" href="#nacl-cert" aria-hidden="true"><span class="octicon octicon-link"></span></a>nacl-cert</h2>
+
+<p>NACL Certification System</p>
+
+<h3>
+<a id="certification-file-format-as-json-consists-of-description-and-signature-two-parts" class="anchor" href="#certification-file-format-as-json-consists-of-description-and-signature-two-parts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Certification file format as JSON consists of description and signature two parts</h3>
+
+<ul>
+<li>Description object defined as below</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>  {  
+      <span class="pl-c">// common part or request part  </span>
+        <span class="pl-s1"><span class="pl-pds">"</span>version<span class="pl-pds">"</span></span><span class="pl-k">:</span> string,       <span class="pl-c">// version: '1.0'  </span>
+           <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> string,       <span class="pl-c">// type: 'self', 'ca'  </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>tte<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s3">Date</span> as ms,   <span class="pl-c">// cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  </span>
+             <span class="pl-s1"><span class="pl-pds">"</span>ca<span class="pl-pds">"</span></span><span class="pl-k">:</span> string        <span class="pl-c">// CA domain name, like iwebpp.com,  </span>
+                                 <span class="pl-c">// in case self-sign it MUST be filled in advance  </span>
+      <span class="pl-s1"><span class="pl-pds">"</span>publickey<span class="pl-pds">"</span></span><span class="pl-k">:</span> byte array,   <span class="pl-c">// NACL Box public key to sign with CA,  </span>
+                                 <span class="pl-c">// or Sign public key to sign by self  </span>
+          <span class="pl-s1"><span class="pl-pds">"</span>names<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain name to ask sign, ignore for self-sign cert  </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>ips<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain ip address to ask sign, ignore for self-sign cert</span>
+           <span class="pl-s1"><span class="pl-pds">"</span>macs<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain mac address to ask sign, ignore for self-sign cert  </span>
+
+      <span class="pl-c">// append fields when sign  </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>gid<span class="pl-pds">"</span></span><span class="pl-k">:</span> uuid string,  <span class="pl-c">// cert global id: 16 bytes of uuid string  </span>
+       <span class="pl-s1"><span class="pl-pds">"</span>signtime<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s3">Date</span> as ms,   <span class="pl-c">// signed time as ms from UTC 1970-01-01T00:00:00Z  </span>
+  }</pre></div>
+
+<ul>
+<li>Signature object defined as below</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>  {  
+      signature<span class="pl-k">:</span> byte array      <span class="pl-c">// NACL signature  </span>
+  }</pre></div>
+
+<ul>
+<li>Entire cert object defined as below</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>  {  
+      desc<span class="pl-k">:</span> Description object,  
+      sign<span class="pl-k">:</span> Signature object  
+  }</pre></div>
+
+<h3>
+<a id="cert-request-object-defined-as-common-part-of-description" class="anchor" href="#cert-request-object-defined-as-common-part-of-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cert request object defined as Common part of Description</h3>
+
+<div class="highlight highlight-js"><pre>self<span class="pl-k">-</span>signed<span class="pl-k">:</span>  {  
+     <span class="pl-c">// common part or request part  </span>
+        <span class="pl-s1"><span class="pl-pds">"</span>version<span class="pl-pds">"</span></span><span class="pl-k">:</span> string,       <span class="pl-c">// version: '1.0'  </span>
+           <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>self<span class="pl-pds">'</span></span>,       <span class="pl-c">// type: 'self'  </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>tte<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s3">Date</span> as ms,   <span class="pl-c">// cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  </span>
+             <span class="pl-s1"><span class="pl-pds">"</span>ca<span class="pl-pds">"</span></span><span class="pl-k">:</span> string        <span class="pl-c">// CA domain name, like iwebpp.com  </span>
+      <span class="pl-s1"><span class="pl-pds">"</span>publickey<span class="pl-pds">"</span></span><span class="pl-k">:</span> byte array,   <span class="pl-c">// NACL Sign public key to sign by self  </span>
+  }  
+
+ca<span class="pl-k">-</span>signed<span class="pl-k">:</span>  {  
+     <span class="pl-c">// common part or request part  </span>
+        <span class="pl-s1"><span class="pl-pds">"</span>version<span class="pl-pds">"</span></span><span class="pl-k">:</span> string,       <span class="pl-c">// version: '1.0'  </span>
+           <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>ca<span class="pl-pds">'</span></span>,         <span class="pl-c">// type: 'ca'  </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>tte<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s3">Date</span> as ms,   <span class="pl-c">// cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  </span>
+             <span class="pl-s1"><span class="pl-pds">"</span>ca<span class="pl-pds">"</span></span><span class="pl-k">:</span> string        <span class="pl-c">// CA domain name, like iwebpp.com  </span>
+      <span class="pl-s1"><span class="pl-pds">"</span>publickey<span class="pl-pds">"</span></span><span class="pl-k">:</span> byte array,   <span class="pl-c">// NACL box public key to sign</span>
+
+          <span class="pl-s1"><span class="pl-pds">"</span>names<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain name to ask sign, ignore for self-sign cert      </span>
+            <span class="pl-s1"><span class="pl-pds">"</span>ips<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain ip address to ask sign, ignore for self-sign cert</span>
+           <span class="pl-s1"><span class="pl-pds">"</span>macs<span class="pl-pds">"</span></span><span class="pl-k">:</span> string array, <span class="pl-c">// domain mac address to ask sign, ignore for self-sign cert  </span>
+  }</pre></div>
+
+<p><br></p>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2014 Tom Zhou(<a href="mailto:iwebpp@gmail.com">iwebpp@gmail.com</a>)</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/InstantWebP2P">InstantWebP2P</a> can be found on <a href="https://github.com/InstantWebP2P/nacl-cert">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
