@@ -4,7 +4,7 @@ nacl-cert
 NACL Certification System
 
 
-### Certification file format as JSON consists of description and signature two parts
+### Certification file format as JSON consists of description and signature parts
 
 * Description object defined as below
 
