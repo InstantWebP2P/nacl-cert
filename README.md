@@ -1,5 +1,5 @@
-nacl-cert
----------
+nacl-cert specification design
+------------------------------
 
 NACL Certification System
 
