@@ -72,6 +72,12 @@ ca-signed:  {
 
 <br/>
 
+
+### Reference implementations
+
+* JS/NodeJS - https://github.com/InstantWebP2P/nacl-cert
+* Java/Android - https://github.com/InstantWebP2P/node-android/blob/master/app/src/main/java/com/iwebpp/crypto/NaclCert.java
+
 ### License
 (Private property)
 
