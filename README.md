@@ -1,4 +1,4 @@
-nacl-cert specification design
+NaCL Cert System Specification
 ------------------------------
 
 NACL Certification System
