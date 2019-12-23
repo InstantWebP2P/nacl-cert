@@ -81,6 +81,6 @@ ca-signed:  {
 ### License
 (Private property)
 
-Copyright (c) 2014-2017 Tom Zhou(iwebpp@gmail.com)
+Copyright (c) 2014-present Tom Zhou(iwebpp@gmail.com)
 
 
