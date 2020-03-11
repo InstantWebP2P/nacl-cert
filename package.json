@@ -19,6 +19,6 @@
     "tweetnacl": "0.13.0",
     "commander": "~1.1.1",
     "optimist": "0.3.x",
-    "node-uuid": "1.4.1"
+    "uuid": "3.0.0"
   }
 }
