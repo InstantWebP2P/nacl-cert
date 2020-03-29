@@ -1,5 +1,5 @@
-NaCL Cert System Specification
-------------------------------
+NaCL Cert System Specification based on TweetNaCL
+-------------------------------------------------
 
 NACL Certification System
 
