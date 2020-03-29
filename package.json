@@ -1,5 +1,5 @@
 {
-  "author": "Tom Zhou (https://aiworkspace.com)",
+  "author": "Tom Zhou <iwebpp@gmail.com> (https://aiworkspace.com)",
   "name": "nacl-cert",
   "description": "NACL certification system",
   "version": "1.1.0",
