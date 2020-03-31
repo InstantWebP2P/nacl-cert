@@ -6,15 +6,15 @@ var ca = cert.generateCA({name: 'aiworkspace.com', tte: new Date('2020-01-01').g
 var ca2 = cert.generateCA({name: 'aiworkspace.com', tte: new Date('2020-01-01').getTime()});
 
 if (ca)
-	console.log('\n\nself-signed CA:'+JSON.stringify(ca));
+    console.log('\n\nself-signed CA:'+JSON.stringify(ca));
 else 
-	console.log('\n\nself-signed CA failed');
+    console.log('\n\nself-signed CA failed');
 
 // validate CA
 if (!cert.validate(ca.cert))
-	throw new Error('\nself-signed CA validate wrong');
+    throw new Error('\nself-signed CA validate wrong');
 else
-	console.log('\n\tself-signed CA validate ... pass');
+    console.log('\n\tself-signed CA validate ... pass');
 
 // ca-sign
 
@@ -34,19 +34,19 @@ var reqdesc = {
 var bcert = cert.generate(reqdesc, ca.secretkey, ca.cert);
 
 if (bcert)
-	console.log('\n\nCA-signed cert:'+JSON.stringify(bcert));
+    console.log('\n\nCA-signed cert:'+JSON.stringify(bcert));
 else
-	console.log('\n\nCA-signed cert failed');
+    console.log('\n\nCA-signed cert failed');
 
 // validate cert
 if (!cert.validate(bcert, ca.cert))
-	throw new Error('\nCA-signed Cert validate wrong');
+    throw new Error('\nCA-signed Cert validate wrong');
 else 
-	console.log('\n\tCA-signed cert validate ... pass');
+    console.log('\n\tCA-signed cert validate ... pass');
 
 // check fake validate
 if (cert.validate(bcert, ca2.cert))
-	throw new Error('\nCA-signed Cert validate faked');
+    throw new Error('\nCA-signed Cert validate faked');
 else 
-	console.log('\n\tCA-signed cert validate ... pass');
+    console.log('\n\tCA-signed cert validate ... pass');
 
