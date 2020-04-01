@@ -14,7 +14,7 @@ NACL Certification System
         "version": string,       // version: '1.0'  
            "type": string,       // type: 'self', 'ca'  
             "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  
-             "ca": string        // CA domain name, like aiworkspace.com,  
+             "ca": string        // CA domain name, like appnet.link,  
                                  // in case self-sign it MUST be filled in advance  
       "publickey": byte array,   // NACL Box public key to sign with CA,  
                                  // or Sign public key to sign by self  
@@ -52,7 +52,7 @@ self-signed:  {
         "version": string,       // version: '1.0'  
            "type": 'self',       // type: 'self'  
             "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  
-             "ca": string        // CA domain name, like aiworkspace.com  
+             "ca": string        // CA domain name, like appnet.link  
       "publickey": byte array,   // NACL Sign public key to sign by self  
   }  
   
@@ -61,7 +61,7 @@ ca-signed:  {
         "version": string,       // version: '1.0'  
            "type": 'ca',         // type: 'ca'  
             "tte": Date as ms,   // cert live time to expire from UTC 1970-01-01T00:00:00Z, ms  
-             "ca": string        // CA domain name, like aiworkspace.com  
+             "ca": string        // CA domain name, like appnet.link  
       "publickey": byte array,   // NACL box public key to sign
         
           "names": string array, // domain name to ask sign, ignore for self-sign cert      
@@ -81,6 +81,6 @@ ca-signed:  {
 ### License
 (Private property)
 
-Copyright (c) 2014-present Tom Zhou(iwebpp@gmail.com)
+Copyright (c) 2014-present Tom Zhou(appnet.link@gmail.com)
 
 

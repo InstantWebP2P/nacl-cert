@@ -2,8 +2,8 @@ var nacl = require('tweetnacl/nacl-fast');
 var cert = require('../nacl-cert');
 
 // self-sign
-var ca = cert.generateCA({name: 'aiworkspace.com', tte: new Date('2020-01-01').getTime()});
-var ca2 = cert.generateCA({name: 'aiworkspace.com', tte: new Date('2020-01-01').getTime()});
+var ca = cert.generateCA({name: 'appnet.link', tte: new Date('2020-01-01').getTime()});
+var ca2 = cert.generateCA({name: 'appnet.link', tte: new Date('2020-01-01').getTime()});
 
 if (ca)
     console.log('\n\nself-signed CA:'+JSON.stringify(ca));
