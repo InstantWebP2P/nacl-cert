@@ -79,7 +79,7 @@ ca-signed:  {
 * [Java/Android](https://github.com/InstantWebP2P/node-android/blob/master/app/src/main/java/com/iwebpp/crypto/NaclCert.java)
 
 ### License
-(Private property)
+(MIT)
 
 Copyright (c) 2014-present Tom Zhou(appnet.link@gmail.com)
 
