@@ -1,7 +1,7 @@
 NaCL Cert System Specification based on TweetNaCL
 -------------------------------------------------
 
-NACL Certification System
+NaCL Certification System
 
 
 ### Certification file format as JSON consists of description and signature parts
